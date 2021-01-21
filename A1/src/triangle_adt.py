@@ -18,26 +18,40 @@ class TriangleT:
 		self.__y = y
 		self.__z = z
 
-	def getsides(self):
-		return (self.__x, self.__y, self.__z)
-
-	def equal(self, triangleT):
+	def __eq__(self, triangleT):
 		inputted = [triangleT.__x, triangleT.__y, triangleT.__z]
+		inputted.sort()
 		current = [self.__x, self.__y, self.__z]
-		if inputted.sort() == current.sort():
+		current.sort()
+		if inputted == current:
 			return True
 		else:
 			return False 
 
+	def get_sides(self):
+		if self.is_valid() == False:
+			raise ValueError ("This is not a valid triangle")
+		else:
+			return (self.__x, self.__y, self.__z)
+
+	def equal(self, triangleT):
+		return self.__eq__(triangleT)
+
 
 	def perim(self):
-		return (self.__x + self.__y + self.__z)
+		if self.is_valid() == False:
+			raise ValueError ("This is not a valid triangle")
+		else:	
+			return (self.__x + self.__y + self.__z)
 
 	def area(self):
-		s = self.perim() / 2
-		return (math.sqrt(s * (s-self.__x) * (s-self.__y) * (s-self.__z)))
+		if self.is_valid() == False:
+			raise ValueError ("This is not a valid triangle")
+		else:	
+			s = self.perim() / 2
+			return (sqrt(s * (s-self.__x) * (s-self.__y) * (s-self.__z)))
 
-	def valid(self):
+	def is_valid(self):
 		if self.__x + self.__y > self.__z and self.__y + self.__z > self.__x:
 			if self.__x + self.__z > self.__y:
 				return True
@@ -47,8 +61,9 @@ class TriangleT:
 			return False
 
 	def tri_type(self):
-
-		if self.__x == self.__y and self.__y == self.__z:
+		if self.is_valid() == False:
+			raise ValueError ("This is not a valid triangle")
+		elif self.__x == self.__y and self.__y == self.__z:
 			return TriType.equilat
 		elif self.__x == self.__y and self.__y != self.__z:
 			return TriType.isosceles
@@ -66,11 +81,4 @@ class TriangleT:
 			else:
 				return TriType.scalene
 
-test1 = TriangleT(1,1,2)
-test2 = TriangleT(1,2,3)
-test3 = TriangleT(3,4,5)
-test4 = TriangleT(3,3,3)
-print (test1.tri_type())
-print (test2.tri_type())
-print (test3.tri_type())
-print (test4.tri_type())
+
