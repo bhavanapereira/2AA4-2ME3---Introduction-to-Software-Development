@@ -15,6 +15,7 @@ compEdgeCase2 = ComplexT(-1, -5)
 comp = ComplexT(2, 3)
 comp2 = ComplexT(3, 3)
 comp3 = ComplexT(10, 4)
+comp4 = ComplexT(3, 4)
 
 validIsosceles = TriangleT(3,2,2)
 validScalene = TriangleT(4,2,3)
@@ -31,8 +32,8 @@ def test_Real():
 	assert validInput1.real() == expectedReal
 
 def edge_test_Real():
-	expectedReal1 = ComplexT(0, 0)
-	assert compEdgeCase1.real() == expectedReal1.real()
+	expectedReal1 = 0
+	assert compEdgeCase1.real() == expectedReal1
 ##DOESNTWORK
 
 def edge2_test_Real():
@@ -48,7 +49,7 @@ def test_Imag():
 def edge_test_Imag():
 	expectedImag1 = 0
 	assert compEdgeCase1.imag() == expectedImag1
-##DOESNTWORK
+##DOESNTTEST
 
 def edge2_test_Imag():
 	expectedImag2 = -5
@@ -142,6 +143,10 @@ def test_div():
 	assert validInput1.div(comp) == expectedDiv
 ##works
 
+def test_sqrt():
+	expectedsqrt = ComplexT(2, 1)
+	assert comp4.sqrt() == expectedsqrt
+	
 def edge_test_div():
 	with pytest.raises(ZeroDivisionError) as e:
 		validInput1.div(compEdgeCase1)
