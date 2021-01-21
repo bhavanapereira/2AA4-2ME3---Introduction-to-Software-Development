@@ -15,8 +15,8 @@ compEdgeCase2 = ComplexT(-1, -5)
 comp = ComplexT(2, 3)
 comp2 = ComplexT(3, 3)
 
-validIsosceles = TriangleT(1,1,2)
-validScalene = TriangleT(1,2,3)
+validIsosceles = TriangleT(3,2,2)
+validScalene = TriangleT(4,2,3)
 validRight = TriangleT(3,4,5)
 validEquilat = TriangleT(3,3,3)
 triEdgeCase1 = TriangleT(0, 1, 2)
@@ -129,7 +129,7 @@ def test_get_sides():
 
 def edges_test_get_sides():
 	with pytest.raises(ValueError) as e:
-		triEdgeCase1.getsides():
+		triEdgeCase1.getsides()
 	assert "This is not a valid triangle" == str(e.value)
 
 def test_equal():
@@ -146,9 +146,28 @@ def test_perim():
 
 def test2_perim():
 	with pytest.raises(ValueError) as e:
-		triEdgeCase1.perim():
+		triEdgeCase1.perim()
 	assert "This is not a valid triangle" == str(e.value)
 
+def test_area():
+	expectedArea = 1.9843
+	assert pytest.approx(validIsosceles.area(), rel=1e-3) == expectedArea
+
+def edge_test_area():
+	with pytest.raises(ValueError) as e:
+		triEdgeCase1.area()
+	assert "This is not a valid triangle" == str(e.value)
+
+def test_isValid():
+	expectedValid = True
+	assert validEquilat.is_valid() == expectedValid
+
+def test2_isValid():
+	expectedValid2 = False
+	assert triEdgeCase1.is_valid() == expectedValid2
+
+def test1_tritype():
+	expectedType = triangle
 
 
 
