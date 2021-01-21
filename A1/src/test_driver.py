@@ -31,12 +31,12 @@ def test_Real():
 	expectedReal = 2
 	assert validInput1.real() == expectedReal
 
-def edge_test_Real():
+def test_edge_Real():
 	expectedReal1 = 0
 	assert compEdgeCase1.real() == expectedReal1
 ##DOESNTWORK
 
-def edge2_test_Real():
+def test_edge2_Real():
 	expectedReal2 = -1
 	assert compEdgeCase2.real() == expectedReal2
 ##DOESNTWORK
@@ -46,12 +46,12 @@ def test_Imag():
 	assert validInput1.imag() == expectedImag
 ##works
 
-def edge_test_Imag():
+def test_edge_Imag():
 	expectedImag1 = 0
 	assert compEdgeCase1.imag() == expectedImag1
 ##DOESNTTEST
 
-def edge2_test_Imag():
+def test_edge2_Imag():
 	expectedImag2 = -5
 	assert compEdgeCase2.imag() == expectedImag2
 ##DOESNTWORK
@@ -61,11 +61,11 @@ def r_test():
 	assert validInput1.get_r() == pytest.approx(expectedR, rel=1e-3)
 ##DOESNTWORK
 
-def edge_r_test():
+def r_edge_test():
 	expectedR1 = 0
 	assert pytest.approx(compEdgeCase1.get_r(), rel=1e-3) == expectedR1
 
-def edge2_r_test():
+def r_edge2_test():
 	expectedR2 = 5.0990
 	assert pytest.approx(compEdgeCase2.get_r(), rel=1e-3) == expectedR2
 ##DOESNTWORK
@@ -75,12 +75,12 @@ def test_getPhi():
 	assert pytest.approx(validInput1.get_phi(), rel=1e-3) == expectedPhi
 ##Works
 
-def edge_test_getPhi():
+def test_edge_getPhi():
 	expectedPhi1 = 0
 	assert pytest.approx(compEdgeCase1.get_phi(), rel=1e-3) == expectedPhi1
 ##DOESNTWORK
 
-def edge2_test_getPhi():
+def test_edge2_getPhi():
 	expectedPhi2 = -1.7682
 	assert pytest.approx(compEdgeCase2.get_phi(), rel=1e-3) == expectedPhi2
 ##DOESNTWORK
@@ -98,7 +98,7 @@ def test_conj():
 	assert validInput1.conj() == expectedConj
 #works
 
-def edge_test_conj():
+def test_edge_conj():
 	expectedConj1 = ComplexT(-1, 5)
 	assert compEdgeCase2.conj() == expectedConj1
 ##DOESNTWORK
@@ -108,7 +108,7 @@ def test_add():
 	assert validInput1.add(comp) == expectedAdd
 ##works
 
-def edge_test_add():
+def test_edge2_add():
 	expectedAdd1 = ComplexT(1, -2)
 	assert compEdgeCase2.add(comp) == expectedAdd1
 ##DOESNTWORK
@@ -118,7 +118,7 @@ def test_sub():
 	assert validInput1.sub(comp) == expectedSub
 ##works
 
-def edge_test_sub():
+def test_edge2_sub():
 	expectedSub1 = ComplexT(3, 8)
 	assert comp.sub(compEdgeCase2) == expectedSub1
 ##DOESNTWORK
@@ -146,8 +146,8 @@ def test_div():
 def test_sqrt():
 	expectedsqrt = ComplexT(2, 1)
 	assert comp4.sqrt() == expectedsqrt
-	
-def edge_test_div():
+
+def test_edge_div():
 	with pytest.raises(ZeroDivisionError) as e:
 		validInput1.div(compEdgeCase1)
 	assert "Cannot Divide By Zero" == str(e.value)
@@ -158,7 +158,7 @@ def test_get_sides():
 	assert validIsosceles.get_sides() == expectedSides
 ##works
 
-def edges_test_get_sides():
+def test_edge_get_sides():
 	with pytest.raises(ValueError) as e:
 		triEdgeCase1.get_sides()
 	assert "This is not a valid triangle" == str(e.value)
@@ -190,7 +190,7 @@ def test_area():
 	assert pytest.approx(validIsosceles.area(), rel=1e-3) == expectedArea
 ##works
 
-def edge_test_area():
+def test_edge_area():
 	with pytest.raises(ValueError) as e:
 		triEdgeCase1.area()
 	assert "This is not a valid triangle" == str(e.value)
