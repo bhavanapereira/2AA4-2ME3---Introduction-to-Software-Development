@@ -22,6 +22,8 @@ validEquilat = TriangleT(3,3,3)
 triEdgeCase1 = TriangleT(0, 1, 2)
 triEdgeCase2 = TriangleT(0.5, 1, 1.5)
 triEdgeCase2 = TriangleT(-3, 4, 5)
+tri = TriangleT(3, 3, 3)
+tri2 = TriangleT(1, 2, 3)
 
 def test_Real():
 	expectedReal = 2
@@ -121,9 +123,35 @@ def edge_test_div:
 
 ####################################
 
-def get_sides():
+def test_get_sides():
 	expectedSides = (1, 1, 2)
 	assert validIsosceles.getsides() == expectedSides
+
+def edges_test_get_sides():
+	with pytest.raises(ValueError) as e:
+		triEdgeCase1.getsides():
+	assert "This is not a valid triangle" == str(e.value)
+
+def test_equal():
+	excpectedEqual = True
+	assert validEquilat.equal(tri) == excpectedEqual
+
+def test2_equal():
+	expectedEqual2 = False
+	assert validEquilat.equal(tri2) == expectedEqual2
+
+def test_perim():
+	expectedPerim = 12
+	assert validRight.perim() == expectedPerim
+
+def test2_perim():
+	with pytest.raises(ValueError) as e:
+		triEdgeCase1.perim():
+	assert "This is not a valid triangle" == str(e.value)
+
+
+
+
 
 
 
