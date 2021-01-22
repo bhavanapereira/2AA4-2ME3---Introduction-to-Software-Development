@@ -1,5 +1,5 @@
 ## @file complex_adt.py
-#  @author Bhavana Pereira
+#  @author Bhavna Pereira
 #  @brief Complex_adt method implementation; step 1 of Assignment 1
 #  @date 21/01/2021
 
@@ -8,6 +8,11 @@ import cmath
 ## @brief This Class creates an object of ComplexT
 #  @details The class takes in two integers and formats them as complex numbers. 
 class ComplexT:
+
+## @brief This is a constructor for ComplexT
+#  @details This constructor creates a complex number based on the inputted values
+#  @param x An integer representing the real value
+#  @param y An integer representing the imaginary value
 	def __init__(self, x, y):
 		self.__x = x
 		self.__y = y
@@ -20,6 +25,7 @@ class ComplexT:
 			return True
 		else:
 			return False
+
 ## @brief this method returns the real number of a complex number
 #  @details in a complex number of format a + bi, this method returns the value a
 #  @return the returned value in the form of an integer
@@ -28,7 +34,7 @@ class ComplexT:
 
 ## @brief this method returns the imaginary number of a complex number
 #  @details in a complex number of format a + bi, this method returns the value b
-#  @return the returned value in the form of an integer
+#  @return the returned value in the form of an integer 
 	def imag(self):
 		return self.__y
 
@@ -60,7 +66,7 @@ class ComplexT:
 #  @details in a complex number of format a + bi, this method 
 #  computes the negative of the imaginary value, i.e., the negative
 #  of value b
-#  @return the returned value in the form of an integer
+#  @return the returned value in the form of an integer object of type ComplexT
 	def conj(self):
 		return ComplexT(self.__x, -self.__y)
 
@@ -113,6 +119,10 @@ class ComplexT:
 		else:
 			return ComplexT((self.__x / complexT.real()), (self.__y / complexT.imag()))
 
+## @brief this method finds the square root of a complex number
+#  @details in the complex number of format a + bi, this method 
+#  uses the cmath library to determine the square root of a + bi
+#  @return the returned value in the form of an integer object of type ComplexT
 	def sqrt(self):
 		ans = cmath.sqrt(self.__x + self.__y*1j)
 		return ComplexT(ans.real, ans.imag)
