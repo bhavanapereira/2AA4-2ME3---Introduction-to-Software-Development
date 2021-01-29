@@ -14,7 +14,7 @@ class ComplexT:
 	# @param y A float that represents the imaginary part of the complex number.
 	# @throws AssrtionError Throws AssertionError if x and y are equal to zero.
 	def __init__(self, x, y):
-		assert (not(x == 0 and y == 0)), "x and y must be non-zero."
+		##assert (not(x == 0 and y == 0)), "x and y must be non-zero."
 		self.x = x 
 		self.y = y
 
