@@ -17,7 +17,7 @@
 \newcounter{stepnum}
 
 \title{Assignment 1 Solution}
-\author{Your Name and macid}
+\author{Bhavna Pereira, pereib4}
 \date{\today}
 
 \begin {document}
@@ -31,22 +31,53 @@ are critiqued and then various related discussion questions are answered.
 
 \section{Assumptions and Exceptions} \label{AssumptAndExcept}
 
+The ambiguity of instruction steps allowed for assumptions to be made. Within \verb|Complex_adt| assumptions were made such that complex numbers do consider 0 to be feasible as both an imaginary and/or real value. Similarly, the code also sees negative integers and decimal values as valid complex number values. Within \verb|triangle_adt|, it is assumed that each client input will be positive integers. For this reason, no test case uses side lengths of decimal values or values equal to or less than 0. Exceptions made during the implementation of the codes include \verb|ZeroDivisionError| and \verb|ValueError|. A \verb|ZeroDivisionError| is implemented within \verb|Complex_adt|,in the \verb|div()|method, seeing as dividing by 0 results in an undefined answer. A \verb|ValueError| is raised within the \verb|get_sides()|, \verb|perim()\, \verb|area()|, and \verb|tri_type()| methods to signify an invalid input of side lengths; the methods run if and only if the inputted side lengths form a valid triangle. This ensures that operations do not produce inaccurate results on a triangle that is not valid. 
+
 
 \section{Test Cases and Rationale} \label{Testing}
+
+The test cases implemented operate on the premise such that the exceptions and assumptions described in \textbf{Assumptions and Exceptions} are in fact valid. The main cases in \verb|Complex_adt| are tested using two positive integer arguments (\verb|ComplexT(2, 3)|, two zero value arguments (\verb|ComplexT(0, 0)|, and two negative integer arguments (\verb|ComplexT(-1, -5)| to ensure that complex numbers of any value are considered as valid arguments. Most methods in \verb|Complex_adt| is tested using all three of these inputs. To test the functionality of \verb|div()|, an edge case of \verb|ComplexT(0,0)| is used to ensure that the \verb|ZeroDivisionError| is raised.
+
+\verb|Triangle_adt| is tested using a valid equilateral triangle, a valid scalene triangle, a valid right triangle, a valid isosceles triangle, and an invalid triangle to test the functionality of the \verb|tri_type()| method. The remainder of the \verb|Triangle_adt| test cases each use one valid triangle and one invalid triangle to ensure that the methods work, only if the arguments produce a triangle of valid side lengths.
 
 
 \section{Results of Testing Partner's Code}
 
+Upon the attempt of testing the partner code files, an error was raised within 0.21 seconds. It was brought to attention that the partner code operates under different assumptions than my code files do. The partner code makes the assumption that 0 is not a valid input for either the real or imaginary parts of a complex number. In order to run the remainder of the test cases, I was required to comment on the assertion made to ensure that neither x nor y can hold the value of 0. 
+
+Since none of my test cases for \verb|Triangle_adt| used values of 0, I did not need to comment out their assertion in their corresponding file. Once this issue was fixed, a total of 22 out of 37 test cases passed.
+
+Of the 15 failed cases, only one case failed due to a difference in calculated values. This test was done on the \verb|get_phi()| method. A reason for this could be a result of my using the cmath library while the partner code manually calculated the value. A few of the other failed test cases were due to the fact that the instances differed, despite having the same values or attributes, namely within the \verb|add()|, \verb|sub()|, \verb|mult()| and \verb|conj()| methods. This could be a result of my code implementing a \verb|__eq__(self, complexT)__| method to ensure that the equal values are displayed as the same instance, while the partner code did not.  As mentioned in the \textbf{Assumptions and Exceptions} section, a few of my \verb|Triangle_adt| methods ensure that invalid triangle inputs will raise a value error. I implemented test cases to verify this on my own code. Upon evaluation, I recognize that the partner code does not raise these errors in methods where my code will, namely within the \verb|get_sides()|, \verb|area()|, \verb|perim()|, and \verb|tri_type()| methods, and thus failed the test.
+
+
 
 \section{Critique of Given Design Specification}
+
+The design of this assignment was initially intimidating, considering I’ve never worked through a virtual machine. I have come to appreciate, however, the ample resources available to ensure a smooth developmental process. The ambiguity of the instruction steps can be taken as either a good design or a difficult-to-navigate design; it makes room for intuitive assumptions, however it could result in a code that does not satisfy the specifications. In order for a code to be correct, it must satisfy its requirement specifications, which are sometimes not clearly defined within this design. Upon completing \textbf{Part 1} of the assignment, a student may have a fair amount of confidence in the performance of their submitted code. However, having made assumptions, they risk not passing some tests that may be used externally and thus risk affecting the usability of the code. Despite this, I do not suggest making changes to the ambiguity of the design. I ultimately enjoyed having freedom to make the assumptions and raise exceptions where I feel necessary, as it allows me to think more rationally as a software engineer, as a good software engineer must be comfortable with different levels of abstraction. 
 
 
 \section{Answers to Questions}
 
 \begin{enumerate}[(a)]
+\item In the \verb|Complex_adt| class, \verb|real()|, \verb|imag()|, \verb|get_r()|, \verb|get_phi()|, \verb|conj()|, and \verb|sqrt()|, are getters. The remainder of the methods are neither getters, nor setters, as they don’t alter to manipulate the current values. They instead use the current values to create new instances of the object. In \verb|Triangle_adt| class, \verb|get_sides()|, \verb|perim()|, \verb|area()|, \verb|is_valid()|, and \verb|tri_type()| are getters, as they only take into consideration the current values. The remainder of the methods, as before, are neither getters, nor setters for the same reasons mentioned previously.
 
-\item 
-\item ...
+\item In \verb|Complex_adt|, the real and imaginary parts of the complex numbers can be considered state variables. Defined in the \verb|__init__(self, x, y)| method, they are kept track of for use in all methods. Similarly, in \verb|Triangle_adt|, the three side lengths are defined in the \verb|__init__(self, x, y, z)| method and kept track of for use in all methods within the class, and thus can be classified as state variables.
+
+
+\item If in the case the user needs to analyze or predict the outcomes of other methods, such as \verb|add()|, \verb|sub()|, and \verb|div()|, the implementation of less than and greater than can be useful. Although the user can determine whether or not a new object is greater than or less than the current object by using the methods mentioned and analyzing the returned values. It can be argued either way, however it is ultimately not important or necessary to have methods for greater than or less than since other methods can help determine this.
+
+\item It is possible that the three integers input to the constructor for \verb|TriangleT| will not form a geometrically valid triangle. This can be determined within the \verb|is_valid()| method. A triangle is valid if and only if the sum of two sides is greater than the value of the third side. This case should be true for all sides. This method returns a boolean value; if the triangle is valid, True will be returned and False will be returned otherwise. It is important to consider the validity of the other methods when inputting a geometrically invalid triangle. For this reason, the methods should also first ensure the triangle is valid before moving forth. If the triangle is invalid, a \verb|ValueError| is raised. In doing so, the user is notified that the triangle is not valid and thus the method will not manipulate it to produce an outcome. 
+
+\item This is a good idea, as the classification of the triangle can be stored within the class. This is useful for when \verb|tri_type()| is not required and does not have to be determined by the user; it is instead given as an input. However, since \verb|tri_type()| is implemented, the user must determine the classification using the method and the type of triangle should not be a state variable.
+
+\item Performance can be seen as an external quality; it can be judged by the user. It has a direct relationship with usability in that poor performance affects the usability of the software. Despite the content or correctness of the code, an inability to perform makes it unusable. Usability can be determined through the user interface; the user will either know or be unaware of how to use a product without instructions. The concept of usability can be further strengthened using standardization. It is important to provide a universal basis of communication with, or standardize, the software whether it is in the form of syntax rules or knowing how to provide a valid input or command line when prompted. 
+
+\item To “fake” a rational design process is to assume the correct software is the one that the developer starts with; documentation is made ignoring all mistakes made throughout the process. This is a result of an inefficient waterfall software design. To simply go forth and provide a faked rational design process is to expect that the final product will be attained by each developer on the first attempt. It is especially necessary to document each step of the development process when working amongst other developers through virtual machines. It is beneficial for each colleague to have access to the history of the development to see which implementations do and do not work as the development progresses. 
+
+\item Reliability is determined by if the software product performs that way it is supposed to do; it is designed in order to meet the instructed specifications. Reusability is determined by if the software product or any part of it can be used to create a new product. It is helpful to reuse components of another reliable product to save time or cost, however issues arise when the specifications of the existing and new products do not coincide. This may result in a reliable, yet incorrect new product. 
+
+\item Programming languages are abstractions atop hardware in many forms. Common examples include the ranges in for loops, or by using \verb|copy()| or \verb|sort()|. Through this, the user can write code without having to worry about the way in which the hardware processes and computes various commands. The same applies for mathematical operations such as **, *, +, -, //, and /; by simply typing these commands, the hardware knows how to accurately compute the intended outcome. Programming languages serve as an interface to communicate with the hardware, such that the language uses abstractions while the hardware uses refinement to produce the desired result. 
+
 
 \end{enumerate}
 
