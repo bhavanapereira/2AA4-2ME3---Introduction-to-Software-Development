@@ -16,7 +16,7 @@ class TriangleT:
 	# @param l3 An integer that represents the length of one side of the triangle.
 	# @throws AssertionError Throws AssertionError if one of the sides is equal to zero.
 	def __init__(self, l1, l2, l3):
-		assert(l1 > 0 and l2 > 0 and l3 > 0), "All three sides must be greater than 0"
+		##assert(l1 > 0 and l2 > 0 and l3 > 0), "All three sides must be greater than 0"
 		self.l1 = l1
 		self.l2 = l2
 		self.l3 = l3
