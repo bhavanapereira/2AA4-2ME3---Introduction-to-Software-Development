@@ -75,8 +75,7 @@ class Scene:
         for i in range(nsteps):
             t.append((i * tfinal) / (nsteps - 1))
             val = [self.__s.cm_x(), self.__s.cm_y(), self.__vx, self.__vy]
-            val2 = scipy.integrate.odeint(self.ode, val, t)
-        return (t, val2)
+        return (t, scipy.integrate.odeint(self.ode, val, t))
 
     def ode(self, w, t):
         return (w[2], w[3], self.__Fx(t) / self.__s.mass(), self.__Fy(t) / self.__s.mass())
