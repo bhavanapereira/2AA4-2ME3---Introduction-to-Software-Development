@@ -2,11 +2,18 @@
 #  @author Bhavna Pereira
 #  @brief Function to plot objects in motion
 #  @date 16/02/2021
-#  @details
+#  @details Using the matplotlib library, the function
+#  provides a visual representation of objects in motion
 
 import matplotlib.pyplot as plt
 
-## @brief This method 
+## @brief This method sets up and graphs the track of objects in motion
+#  @details the method creates three subplots to represent to compare
+#  the x coordinate of the CM against the time of motion, the y coordinate
+#  of the CM against the time of motion, and the x coordinate versus the
+#  y coordinate
+#  @param this method takes in two parameters, a sequence of sequences and
+#  the sequence of time values
 def plot(w,t):
     if len(w) != len(t):
         raise ValueError
