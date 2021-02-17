@@ -1,12 +1,12 @@
-## @file
-#  @author
-#  @brief
-#  @date
+## @file Plot.py
+#  @author Bhavna Pereira
+#  @brief Function to plot objects in motion
+#  @date 16/02/2021
 #  @details
 
 import matplotlib.pyplot as plt
 
-
+## @brief This method 
 def plot(w,t):
     if len(w) != len(t):
         raise ValueError
