@@ -32,7 +32,7 @@ def plot(w, t):
             x.append(w[i][0])
         for i in range(0, len(w)):
             y.append(w[i][1])
-        axs[0].plot(x, t)
-        axs[1].plot(y, t)
-        axs[2].plot(y, x)
+        axs[0].plot(t, x)
+        axs[1].plot(t, y)
+        axs[2].plot(x, y)
         plt.show()
