@@ -27,12 +27,14 @@ class CircleT(Shape):
             self.__r = r
             self.__m = m
 
-## @brief this method returns the value of the x coordinate of the circle
+## @brief this method returns the value of the x coordinate of the circle's
+#  center of mass
 #  @returns Returns the state variable of the correct type
     def cm_x(self):
         return self.__x
 
-## @brief this method returns the value of the y coordinate of the circle
+## @brief this method returns the value of the y coordinate of the circle's
+#  center of mass
 #  @returns Returns the state variable of the correct type
     def cm_y(self):
         return self.__y
