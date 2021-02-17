@@ -18,10 +18,11 @@ class Scene:
     ## @brief This method is a constructor for Scene
     #  @details The method creates state variables for the shape type,
     #           its velocities, and the forces acting upon it
-    #  @param the method takes in five parameters s, Fx, Fy, vx, vy
-    #         to represent the shape, horizontal acting forces,
-    #         vertical acting forces, initial horizontal velocity, and initial
-    #         vertical velocity, respectively
+    #  @param s represents the shape Fx, Fy, vx, vy
+    #  @param Fx represents a function for horizontal forces
+    #  @param Fy represents a function for vertical forces
+    #  @param vx represents a real number horizontal velocity
+    #  @param vy represents a real number vertical velocity
     def __init__(self, s, Fx, Fy, vx, vy):
         self.__s = s
         self.__Fx = Fx
@@ -65,14 +66,13 @@ class Scene:
 
     ## @brief this method extracts data points to represent the track of
     #         the object in motion
-    #  @details
-    #  @param the method takes in two parameters representing the final time
-    #         and the number of steps or movements of the object
+    #  @param tfinal represents the final time
+    #  @param nsteps represents number of movements
     #  @returns the method returns the time and the respective track of the
     #           object for each moment of its course in motion
     def sim(self, tfinal, nsteps):
         t = []
-        for i in range(0, nsteps):
+        for i in range(nsteps):
             t.append((i * tfinal) / (nsteps - 1))
             val = [self.__s.cm_x(), self.__s.cm_y(), self.__vx, self.__vy]
             val2 = scipy.integrate.odeint(self.ode, val, t)
