@@ -47,7 +47,7 @@ class TriangleT(Shape):
 
     ## @brief this method calculates the moment of inertia of the triangle
     #  @details using the mass, multiplied by the square of the sidelength
-    #           and dividind the product by 12, this method returns the value of
+    #           and dividing the product by 12, this method returns the value of
     #           the moment of inertia
     def m_inert(self):
         return (self.__m * (self.__s**2)) / 12
