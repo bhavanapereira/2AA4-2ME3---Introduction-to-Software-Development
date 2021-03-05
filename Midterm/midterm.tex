@@ -59,9 +59,9 @@ MCMASTER UNIVERSITY MIDTERM EXAMINATION \hfill March 4, 2021
 
 %\begin{minipage}[t]{1.0\textwidth}
 
-NAME: \wss{Enter your name here}\\[1ex]
+NAME: \wss{Bhavna Pereira}\\[1ex]
 
-Student ID: \wss{Enter your student number here} \\[2mm]
+Student ID: \wss{400241502} \\[2mm]
 
 \noindent
 \rule[3 mm]{\textwidth}{0.5mm}
@@ -140,15 +140,15 @@ documentation, and/or Parnas's principles.
 \begin{enumerate}[a)]
 \item Abstraction
   \begin{itemize}
-  \item
-  \item
-  \item
+  \item The process of faking a rational design process enables the developer to leave out any mistakes made throughout the actual development process. This uses the principle of abstraction by leaving out details, such as mistakes, which are irrelevant to anyone else attempting to recreate the design process.
+  \item Abstraction is further used in the design process by creating the Module Interface Specifications to highlight key requirements, while not yet determining their methods of implementation. 
+  \item The entire rational design process follows a cascade of refinement. The Requirement itself can be extremely abtract. A client may ask the developer to accomplish a task, but not provide any information, or in simpler terms, even care, about how the developer goes about it, as long as thet requirement is being met. The designer then, as mentioned in the point above, decomposes the requirement into important details through an MIS, but still leaves abstraction in that the developer has not yet decided how to implement the criteria. By the actual application process, through code and implementation, the design has becomes rigourous in that it very specifically accomplishes the task at hand. Thus, the process as a whole operates on the principle of abtstraction to refinement as it progesses.
   \end{itemize}
 \item Separation of Concerns
   \begin{itemize}
-  \item
-  \item
-  \item
+  \item In using design specification to define requirements, the rational design process uses the principle of separation of concerns to detail what exactly needs to be done, for each module that needs to be created. By taking the requirements and decomposing it into smaller problems, this presents a separation of concerns. Within each module itself, the abstraction that comes from what needs to be done and not \emph{how} to do it is yet another separation of concern. 
+  \item Integration testing in itself operates on the premise of separation of concerns, in that it is needed to ensure that modules that use other modules work as intended. Moving up in the hierarchy, the design is successful when each module can be run without error. Due to the fact that modules can rely on other modules, the end goal of the Requirements being met is based off of the separation of concerns (individual modules) coming together to accomplish what is being asked.
+  \item Once provided with the requirements, the Design stage of the rational design process allows the developer to extract key details and begin considering likely changes, in order to increase software adaptability. correctivity, and other qualities. Once deciding on modules to take care of these key details, Parnas's design document takes into consideration the MIS, but also the module guide. Within the module guide, there exists a hierarchy, essentially accomplishing decomposition by secrets. Here, there is present the principle of separation of concerns, through behavioural, software and hardware decision hiding modules, which separates key underlying aspects of the requirement and overall design.
   \end{itemize}
 \end{enumerate}
 
@@ -468,11 +468,12 @@ and minimality.  Please be specific in your answer.
 
 \wss{Put your answer for each quality below.}
 
+
 \begin{itemize}
-\item \textbf{consistency}:
-\item \textbf{essentiality}:
-\item \textbf{generality}:
-\item \textbf{minimality}:
+\item \textbf{consistency}: SetofInt lacks consistency in terms of naming convention. Based on \verb|is_member()|, you would expect the \verb|empty()| function to be named \verb|is_empty()| and the \verb|equals| method to be named \verb|is_member|. None of the methods have exceptions, but this consistent with the fact that the assumptions specify that each input will be of the correct type. The inputs and outputs, however are not very consistent in that the programs have a mix of input/output types ranging sets, sequences, booleans, natural numbers, and integers.
+\item \textbf{essentiality}: It is superfluous to implement both the \verb|empty()| and \verb|size()| methods. The \verb|size()| method returns the size of the set, which will return 0 as the natural number output, if the set is, in fact, empty. This omits the necessity for the \verb|empty()| function. Through this, the MIS does not completely adhere to the Quality of essentiality. 
+\item \textbf{generality}: The set is not general, in that it operates specifically on sets of integer values. If the module was to be used for a set of any other type (string, character, etc.), in order for it to work. 
+\item \textbf{minimality}: Due to the issue of essentiality mentioned above, the ADT is not minimal. In order for it to be minimal, each access routine would perform uniquely. Implementing \verb|size()| \textbf{and} \verb|empty()| fails to make this ADT minimal, by accomplishing similar and in one case, the exact same, function, the quality of minimality is tarnished.
 \end{itemize}
 
 \end{minipage}
@@ -503,9 +504,9 @@ characterize the changes; you don't actually have to make them.)
 \wss{Put your answer below.}
 
 \begin{enumerate}[a.]
-\item
-\item
-\item
+\item Instead of an initial input of a set of integer values, it can be made generic by inputting a type itself in order for the constructor method to instantiate a set of that type. By inputting T, where T is any Type, the constructor method can instantiate that Type into a set of that Type, as opposed to a set exclusively of integers.
+\item Python uses what is called Duck Typing, in that it "trusts the coder" to adhere to that type throughout the ADT. The way it is implemented in python doesn't specify to the constructor that the set is of integer values, python accepts this and trusts that that object will be treated as the same type throughout the program. 
+\item *
 \item (BONUS)
 \end{enumerate}
 
