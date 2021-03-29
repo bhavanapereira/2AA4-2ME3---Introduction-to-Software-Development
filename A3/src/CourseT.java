@@ -136,7 +136,8 @@ public class CourseT{
 	}
 
     /**
-    * @brief The method measures()
+    * @brief The method measures() finds the number of learning outcome associated with the indicator
+    * @deails if there are no learning outcomes, the method returns an array of four 0s. Else, 
     */
 	public double[] measures(IndicatorT ind){
 		if (getLOs(ind).length == 0){
@@ -191,11 +192,25 @@ public class CourseT{
 			return measureInd;	
 		}
 	}
-
+    /**
+    * @brief the method set_to_seq() converts a HashSet into an Array 
+    * @details takes in a HashSet of type LOsT, converts and returns it into an array of the same size with the same contents
+    * @param s , a HashSet of type LOsT
+    * @returns an Array of type LOsT
+    */
 	public LOsT[] set_to_seq(HashSet<LOsT> s){
 		return s.toArray(new LOsT[s.size()]);
 	}
 
+    /**
+    * @brief The method sumMeas() creates an array formed from two inputted arrays.
+    * @details The method initializes an array of length 4. It then iterates through the first inputted array and copies its contents 
+    *          into the created array. From there, it adds the value of each index of the second array to the value of the created array's
+    *          corresponding index. It then returns the created array, where each index represents the sum of the inputted two array's corresponding index values
+    * @param a , an array of primitive type double and length of 4
+    * @param b , an array of primitive type double and length of 4
+    * @returns an array of primitive type double and length of 4
+    */
 	public double[] sumMeas(double[] a, double[] b){
 		double[] sum = new double[a.length];
 		for (int i = 0; i < a.length; i++){
