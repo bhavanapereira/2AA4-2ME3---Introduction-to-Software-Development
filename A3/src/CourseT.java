@@ -137,8 +137,12 @@ public class CourseT{
 	}
 
     /**
-    * @brief The method measures() finds the number of learning outcome associated with the indicator
-    * @deails if there are no learning outcomes, the method returns an array of four 0s. Else, 
+    * @brief The method measures(ind) overwrites the original measures() when a paramter of type IndicatorT is passed into it
+    * @deails if there are no learning outcomes, the method returns an array of four 0s. Else, if the NInd value is equal to True, for every learning outcome, SumMeas() 
+    *         performs inductive summation until each outcome is added to the array. This is an array representing the sum of each of the same index for each learning outcome, 
+    *         within its own four indices. Then it is passed onto and returns the normal() of the array. If NInd is equal to false, the same process is repeated, except the array is simply
+    *         returned as is. 
+    * @param ind of type Indicator T
     */
 	public double[] measures(IndicatorT ind){
 		if (getLOs(ind).length == 0){
@@ -167,6 +171,12 @@ public class CourseT{
 		}
 	}
 
+    /**
+    * @brief The method measures(ind) overwrites the original measures() when a paramter of type AttributeT is passed into it
+    * @details if there are no learning outcomes, the method returns an array of four 0s. Otherwise, if the NAtt value is equal to true, it calls measures(ind) 
+    *          on the indicators retrieved from the input attribute. It then inductively sums up the array until the same array representing the summa of all indices is reached
+    *          and the normal of this array is returned. If the NAtt is false, then the process is repeated, however the array is simply returned as is.
+    */
 	public double[] measures(AttributeT att){
 		if (getIndicators().length == 0){
 			return new double[] {0,0,0,0};
