@@ -67,13 +67,13 @@ public class TestCourseT{
     	assertNotSame(expectedName, course.getName());
     }
 
-    // @Test
-    // public void testGetIndicators(){
-    // 	HashSet<IndicatorT> expectedArray = new HashSet<IndicatorT>(Arrays.asList(new IndicatorT[] {IndicatorT.tools, IndicatorT.math, IndicatorT.assumpt, IndicatorT.modelSelect}));
-    // 	for (IndicatorT i; course.getIndicators()){
-    // 		assertTrue(expectedArray.contains(i));
-    // 	}
-    // }
+    @Test
+    public void testGetIndicators(){
+    	HashSet<IndicatorT> expectedArray = new HashSet<IndicatorT>(Arrays.asList(new IndicatorT[] {IndicatorT.tools, IndicatorT.math, IndicatorT.assumpt, IndicatorT.modelSelect}));
+    	for (IndicatorT i; course.getIndicators()){
+    		assertTrue(expectedArray.contains(i));
+    	}
+    }
 
     @Test
     public void testGetLOsFalse(){
@@ -89,5 +89,10 @@ public class TestCourseT{
     	for (int i = 0; i < list.length; i++){
     		assertEquals(list[i], course.getLOs(IndicatorT.openEnded)[i]);
     	}
+    }
+
+    @Test
+    public void testAddLo(){
+    	CourseT excpectedCourse = new CourseT(name, )
     }
 }
