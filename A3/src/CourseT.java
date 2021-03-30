@@ -15,7 +15,11 @@ import java.util.HashSet;
 * @brief This type instantiates the course, along with the 
 *        learning outcomes that are associated with it
 * @details This class allows for the manipulation of course properties
-*          based on the name of the Course and the Indicators and Learning outcomes
+*          Based on the name of the Course and the Indicators and Learning outcomes.
+*          It is assumed that by the time this class is used, there will be Learning Outcomes
+*          That populate the indicators. It is also assumed that addLO will be called at least 
+*          Once for each Course Indicator. Additionally, not all Learning Outcomes will be removed,
+*          If at all they are removed.
 */
 public class CourseT{
 
@@ -130,7 +134,9 @@ public class CourseT{
 	}
 
     /**
-    * @brief The method measures() checks to see if the Operation is supported
+    * @brief The method measures() ensures that this measures is never used within the CourseT Class.
+    * @details Although this class inherits the Measures Interface, measures within here should only be called with either a paramter of type
+    *          AttributeT or of type IndicatorT.
     */
 	public double[] measures(){
 		throw new UnsupportedOperationException("UnsupportedOperationException");
