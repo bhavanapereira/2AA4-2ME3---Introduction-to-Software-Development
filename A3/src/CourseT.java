@@ -33,6 +33,7 @@ public class CourseT{
 
 	public CourseT(String courseName, IndicatorT[] indicators){
 		this.name = courseName;
+		this.m = new HashMap<IndicatorT, HashSet <LOsT>>();
 		for (int i = 0; i < indicators.length; i++){
 			m.put(indicators[i], new HashSet<LOsT>());
 		} 
@@ -99,7 +100,7 @@ public class CourseT{
 	public void delLO(IndicatorT indicator, LOsT outcome){
 		if (m.containsKey(indicator)){
 			m.get(indicator).remove(outcome);
-		}	
+		}
 	}
 
 	/**
@@ -120,7 +121,7 @@ public class CourseT{
 				return false;
 			}
 			for (int i = 0; i < outcomes.length; i++){
-				if (!m.containsValue(outcomes[i])) {
+				if (!m.get(indicator).contains(outcomes[i])) {
 					return false;
 				}
 			}
