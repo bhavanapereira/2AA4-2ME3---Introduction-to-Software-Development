@@ -57,7 +57,13 @@ public class TestAttributeT {
 
     @Test
     public void testGetIndicators2(){
-    	IndicatorT[] expectedArray = {IndicatorT.tools, IndicatorT.math, IndicatorT.assumpt};
+    	IndicatorT[] expectedArray = {IndicatorT.tools, IndicatorT.math, IndicatorT.assumpt    @Test
+    public void testGetIndicators(){
+    	IndicatorT[] expectedArray = {IndicatorT.math, IndicatorT.assumpt, IndicatorT.tools};
+    	for (int i = 0; i < indList.length; i++){
+    		assertEquals(expectedArray[i], attTest.getIndicators()[i]);
+    	}
+    }};
     	for (int i = 0; i < indList.length; i++){
     		assertNotSame(expectedArray[i], attTest.getIndicators()[i]);
     	}
