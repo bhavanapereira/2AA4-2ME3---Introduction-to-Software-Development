@@ -538,16 +538,7 @@ $~~$$~~$$~~$$~~$The implementation of my design ensures minimality within each m
 $~~$$~~$$~~$$~~$The MIS for each module is general in that it specifies only what needs to be outputted, but is open ended for the developer to decide how they would wish to implement the methods. For a few methods, however, there is no way to make the specification general; the \verb|up()|, \verb|down()|, \verb|left()|, and \verb|right()| methods call on other methods and thus cannot be implemented in more ways than one. \newline
 \newline
 $~~$$~~$$~~$$~~$The design is consistent in naming conventions, in that each method with more than one word is named using Camel Case, while one word methods are lowercase. The parameters used for methods are all name consistently; every parameter of type \verb|int[][]| is given the variable name \verb|board|, which is synonymous to \verb|grid| but is used to avoid confusion. Every parameter of type \verb|String| is given the variable name \verb|direction| to make the code easily to follow along with. Iteration through the cells of the grid use the same variables, where \verb|int i| and \verb|int j| represent the row and column of the grid, respectively. The design was created to make errors legible to the user in the form of a displayed message, as opposed to raising an error. If the user input is not equal ‘i’, ‘k’, ‘j’ or ‘l’, the system displays a message informing them that their input is invalid, and that they should use the appropriate keys to navigate the game. By not raising an error for every invalid key pressed, the game does not halt, which allows the user to continue playing and avoids having to restart every time. \newline
-\newline
 $~~$$~~$$~~$$~~$The design additionally has high cohesion, in that the properties of each module as closely related. They work an accomplish specific things, however in order to run the game, including the controller, the model of the board, and the display of the board and prompt, each module works together. In terms of information hiding, methods used by other modules were made public. The instances of the \verb|BoardT| created were made private to avoid user manipulation. This allows whatever happens with the model of the board based on user input to happen behind the scenes. 
 
-
-\section* {Question 1}
-
-\section* {Question 2}
-
-\begin{center}
-  \includegraphics[width=0.8\textwidth, angle = 270]{CFG.jpg}
-\end{center}
 
 \end {document}
