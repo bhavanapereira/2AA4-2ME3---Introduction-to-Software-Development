@@ -190,11 +190,11 @@ by secrets hierarchy.
 \item \textbf{Is this module Hardware Hiding, Software Decision Hiding or
     Behaviour Hiding?  Why?}
 
-  - answer here
+  - This module falls under Software Decision Hiding. Noting that the software requirements specification (SRS) is abstract, the developer becomes more concrete in the Module Guide, then more concrete in the MIS, and then even more concrete in the actual code. Decisions, such as determining the algorithm and data structure for the shortest path, fall under the category of Software Decision hiding in that it makes the service less abstract. Modules such as this provide generic services that can be used elsewhere if need be. Services such as this, solve the ODE. 
 
 \item \textbf{Is this a good secret?  Why?}
 
-  - answer here
+  - This is not a good secret. The secret uses nouns such as "data structure" and "algorithm" which is efficient, but it fails to adhere to having one secret for one module. By using "and", the secret suggests that the module implements both the data structure and algorithm for finding the shortest path, leaving it two responsibilities. It would be better to split this into two modules; one for the data structure for finding the shortest path, and one for the algorithm for finding the shortest path. By having too many secrets, the module risks not being cohesive.  
 
 \item \textbf{Does the specification for maze tracing robot require environment
     variables?  If so, which environment variables are needed?}
@@ -230,7 +230,7 @@ opponent.
 \item \textbf{Everything in your process should be verified, including the
     verification.  How might you verify your verification?}
 
-  - answer here
+  - Mutant testing is a feasible method of verifying the verification. By using employing the "Potato Lake" method, this artifical seeding of faults aids in discovering both seeded and new faults, which is used to estimate the total number of errors or faults in the code. Through this, we can grasp and assume that the proability of errors (total) is proportional to the number of errors already found with respect to the whole program. Mutation testing can be done by generating simple changes to the source code, which become faults. This can be done by modifying operations and constants or by changing the order of certain executions. It is not guaranteed that all of these modifications will produce an error, but it is safe to assume the majority of them will. We can ultimately establish the adequacy of our Test Set from from running our tests on each of our generate faults (mutants).
   
 \item \textbf{How do you propose verifying the installability of your game?}
 
