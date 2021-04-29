@@ -140,7 +140,7 @@ written per day'' as a metric for programmer productivity?
   as required.}
 
 \begin{itemize}
-\item This is quite a novice mistake; it is important to realize that a longer code does not always mean a better code. Succinct code is oftentimes far more advantageous in many areas. If the programmer practices incremental testing, as is best, by the time they finish their code they might end up with far more than necessary test cases. Having more test cases also does not mean that the testing process was more efficient; they may fail to test boundary cases. With succinct code, the programmer is given the ability to better view important testing cases such as boundaryies. In addition, Long code risks cluttering, making it harder to read and to understand by another developer. They risk affecting major software qualities such as generality, minimality, and essentiality by overdoing what may be required for a simple method. These in turn risk failing to meet the software requirements. It is best to judge programmer productivity through incremental testing, ensuring that whatever they have is correct, and not by the average amount of lines. Writing more code is a waste of resources and time that could be better spent on important program qualities to complete. 
+\item This is quite a novice mistake; it is important to realize that a longer code does not always mean a better code. Succinct code is oftentimes far more advantageous in many areas. If the programmer practices incremental testing, as is best, by the time they finish their code they might end up with far more than necessary test cases. Having more test cases also does not mean that the testing process was more efficient; they may fail to test boundary cases. With succinct code, the programmer is given the ability to better view important testing cases such as boundaries. In addition, longer codes risk cluttering, making it harder to read and to understand by another developer, on top of making the debugging process much more of a hassle, should they fail to incrementally verify their program. They risk affecting major software qualities such as generality, minimality, and essentiality by overdoing what may be required for a simple method. By overdoing code, they may in turn add too many specifics such that the program cannot reusable in the long term. Furthermore, maintainability is affected in that there is much more to go over every time a change needs to be made. These in turn risk failing to meet the software requirements. It is best to judge programmer productivity through incremental testing, ensuring that whatever they have is correct, and not by the average amount of lines. Writing more code is a waste of resources and time that could be better spent on important program qualities to complete. 
 
 \end{itemize}
 
@@ -166,7 +166,7 @@ specification?
 \begin{itemize}
 \item \textbf{Abstract} - This specification is abstract in that it tells the developer the "what" such that the program should be easy to use, however it does not tell the developer the "how". By not providing the "how", the specification leaves an open opportunity to for the developer to go about "making the CellApp easy to use" in a way that they feel fit. Based on the full abstraction, however, the developer is left to make assumptions which leads to ambiguity as discussed in the next point. 
 \item \textbf{Unambiguous} - The terms "easy to use" or "user friendly" as extremely ambiguous. The developer does not know who the target user is, they may come from a different age range, technical background, etc. It is very subjective to say user friendly; what may be easy to use for one person can be difficult to use by another. 
-\item \textbf{Validatable} - Tying closely to ambiguity, it is difficult to measure validability of this specification. By the subjectivity of the specification, the developer may find it difficult to test or measure success and failure in meeting the requirement. The ambiguity of this specification leads to misunderstanding between the developer and the client, such that even though the developer may find it user-friendly, the client may not and for this reason a viable test cannot take place to validate the requirement. 
+\item \textbf{Validatable} - Tying closely to ambiguity, it is difficult to measure validability of this specification. By the subjectivity of the specification, the developer may find it difficult to test or measure success and failure in meeting the requirement. It is hard to quantify "easy" without specific requirements. The ambiguity of this specification leads to misunderstanding between the developer and the client, such that even though the developer may find it user-friendly, the client may not and for this reason a viable test cannot take place to validate the requirement. 
 \item \textbf{How to improve} - There are ways to improve this specification, by clearly identifying what the client considers "user-friendly". Extend the context by requiring, perhaps, "a certain amount of clicks made by the user", or testing by implementing surveys for user feedback. In doing so, the developer and client may come to a clearer agreement and the developer is one step closer to ensuring that they are making the right product
 \end{itemize}
 
@@ -200,7 +200,7 @@ by secrets hierarchy.
 \item \textbf{Does the specification for maze tracing robot require environment
     variables?  If so, which environment variables are needed?}
 
-  - TODO
+  - The developer should implement environment variables such as the display or the screen available to the user, along with the position (cell) at which the pen or tracker is currently on. We should additionally implement environment variables to recognize the state of the game, i.e. new game, lost game, or completed path, etc.
 
 \end{enumerate}
 
@@ -260,7 +260,7 @@ human opponents, or locally between a human and an Artificial Intelligence
     hours do you estimate that your team has available for verification related
     activities?  Please justify your answer.}
 
-  - My group and I are presumably enrolled in other courses, meaning we cannot work on this project as much as we'd like to (i.e. full time :)). Based on this, a realistic amount of hours a week on testing would be 10 hours, approximately 2 hours a day (if not less). Towards the end, I assume the emphasis for verfication will increase significantly. 
+  - My group and I are presumably enrolled in other courses, meaning we cannot work on this project as much as we'd like to (i.e. full time :)). Based on this, a realistic amount of hours a week on testing would be 10 hours, approximately 2 hours a day for a 5 day week(if not less). Towards the end, I assume the emphasis for verfication will increase significantly. The amount of verification within four weeks should be amplified as opposed to the amount of verification within an 8 month span. In total, the collective hours spent of verification would be just below 40 hours, be that dynamic or static. 
   
 \item \textbf{Given the estimated hours available for verification, what verification
     techniques do you recommend for your team?  Please list the techniques,
@@ -272,7 +272,7 @@ human opponents, or locally between a human and an Artificial Intelligence
 \item \textbf{Is the oracle problem a concern for implementing your game?  Why
     or why not?  If it is a concern, how do you recommend testing your software?}
 
-  - answer here
+  - Since oracles are requires at each stage of testing, are quite difficult to design \textit{and} we only have four weeks, the oracle problem is a concern for implementing our game. We must instead implement strategies without an oracle, such as metamorphism. We can assume a solution, and use it to reversely calculate the inputs that should lead to that solution. We can then use the calculated inputs as inputs again and compare the result to the initially assumed solution. We can use metamorphic relations which specify how changes in our inputs should change the output. We could also use an independent program that can approximate the oracle itself, such as matlab or an already existing game similar to ours, whilst comparing similarities and differences in behaviour.
     
 \end{enumerate}
 
@@ -299,14 +299,12 @@ You can assume that inputs outside of the range 1 to 1000 do not occur.
 \item What are the sets $D_i$ that partition $D$ (the input domain) into a
   reasonable set of equivalence classes?
 
-  \wss{answer here - you can answer in natural language, or using mathematical
-    notation.}
+  We can consider a set of multiples of 5, a set of multiples of 7, a set of multiples of both 5 and 7, and set of neither multiples of 5 nor 7, in which presumably all test lines of code will be considered and tested.
 
 \item Given the sets $D_i$, and the heuristics discussed in class, how would you
   go about selecting test cases?
 
-  \wss{answer here - you don't need specific test cases; your answer should
-    characterize how all significant test cases are to be chosen.}
+  It is important to choose values on the specific boundaries, i.e. 5 and 7. In addition we should choose values to test that are quite close to the boundaries, and extremes values, as one would do in the case of black-box testing. In the sense of implementing white-box testing, we would have to take into consideration path coverage (i.e. will we ever get complete path coverage), where we select a test set that traverses all paths from the intiial to the final node of the control flow, if any. We can additionally take into consideration edge coverage (i.e if it is a multiple of 5 and not 7, etc), where we select a test set T such that every edge of the control flow is exercised at least once.
   
 \end{enumerate}
   
