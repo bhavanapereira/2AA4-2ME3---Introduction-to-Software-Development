@@ -267,7 +267,7 @@ human opponents, or locally between a human and an Artificial Intelligence
     along with the number of hours your team will spend on each technique, and
     the reason for selecting this technique.}
 
-  - The best method is to incrementally verify our project, in terms of installability, working codes through unit testing. We should implement both dynamic as static testing. Through incremental testing, dynamic testing should not be too much of a stress; we test the behaviour of our code as we go. In terms of static analysis, it is best that we gather and ask specific questions pertaining to our documentation, i.e. "will this loop ever run", "is the syntax correct", "is this specification ambiguous/essential, etc". Given that we have our peers (not in capstone due to academic integrity) and group members as an available resource, we should take advanatge of periodic code walkthroughs, inspections, and most practically on our own time, rubber duck testing to ensure that what we are creating realyl and truly makes sense. 
+  - The best method is to incrementally verify our project, in terms of installability, working codes through unit testing. We should implement both dynamic as static testing. Through incremental testing, dynamic testing should not be too much of a stress; we test the behaviour of our code as we go through white-box and white-box testing. In terms of static analysis, it is best that we gather and ask specific questions pertaining to our documentation, i.e. "will this loop ever run", "is the syntax correct", "is this specification ambiguous/essential, etc". Given that we have our peers (not in capstone due to academic integrity) and group members as an available resource, we should take advanatge of periodic code walkthroughs, inspections, and most practically on our own time, rubber duck testing to ensure that what we are creating realyl and truly makes sense.
   
 \item \textbf{Is the oracle problem a concern for implementing your game?  Why
     or why not?  If it is a concern, how do you recommend testing your software?}
@@ -368,6 +368,7 @@ $\mathit{Xturn}$: $\mathbb{B}$
 \subsubsection* {State Invariant}
 
 \wss{Place your state invariant or invariants here}\\
+$i > 0 \wedge j > 0$
 
 \subsubsection* {Assumptions}
 
@@ -407,7 +408,7 @@ $exc := (\mbox{InvalidPosition}(i, j) \Rightarrow \mbox{OutOfBoundsException})$
 
 \noindent get\_turn():
 \begin{itemize}
-\item output: \wss{Return the cellT that corresponds to the current turn}\\
+\item $output: (\mathit{Xturn} \Rightarrow \mbox{X} | \neg \mathit{Xturn} \Rightarrow \mbox{O})$
 
 \item exception: none
 \end{itemize}
