@@ -18,12 +18,12 @@ public class Expt
 {
    public static void main(String[] args) {
 
-      // MeanCalculator mharm = new HarmonicMean();
-      // MeanCalculator mquad = new QuadraticMean();      
-      // Seq1D s = new Seq1D(new ArrayList<Double>(Arrays.asList(2.0, 2.0, 1.0, 1.0)), mharm);
-      // System.out.println("Harmonic Mean: " + s.mean());
-      // s.setMeanCalculator(mquad);
-      // System.out.println("Quadratic Mean: " + s.mean());      
+      MeanCalculator mharm = new HarmonicMean();
+      MeanCalculator mquad = new QuadraticMean();      
+      Seq1D s = new Seq1D(new ArrayList<Double>(Arrays.asList(2.0, 2.0, 1.0, 1.0)), mharm);
+      System.out.println("Harmonic Mean: " + s.mean());
+      s.setMeanCalculator(mquad);
+      System.out.println("Quadratic Mean: " + s.mean());      
 
   }
 }
